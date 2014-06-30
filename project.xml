@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <pomVersion>3</pomVersion>
+  <artifactId>jilter</artifactId>
+  <groupId>jilter</groupId>
+  <contributors>
+    <contributor>
+      <name>Neil Aggarwal</name>
+      <email>neil@JAMMConsulting.com</email>
+      <organization>JAMM Consulting, Inc.</organization>
+      <url>http://www.JAMMConsulting.com</url>
+      <timezone>-6</timezone>
+    </contributor>
+  </contributors>
+  <id>jilter</id>
+  <name>sendmail-jilter</name>
+  <currentVersion>1.2</currentVersion>
+  <organization>
+    <name>Sendmail, Inc.</name>
+    <url>http://www.sendmail.com</url>
+    <logo>http://www.sendmail.com/images/logo.gif</logo>
+  </organization>
+  <inceptionYear>2004</inceptionYear>
+  <package>com.sendmail.jilter</package>
+  <url>http://sendmail-jilter.sourceforge.net</url>
+  <issueTrackingURL>http://sourceforge.net/projects/sendmail-jilter</issueTrackingURL>
+  <siteAddress>shell.sourceforge.net</siteAddress>
+  <siteDirectory>/home/groups/s/se/sendmail-jilter/htdocs</siteDirectory>
+  <description>
+    Sendmail-Jilter is an Open Source implementation of the Sendmail milter protocol,
+    for implementing milters in Java that can interface with the Sendmail MTA.
+  </description>
+  <developers>
+    <developer>
+      <name>Blake Ramsdell</name>
+      <id>bcr</id>
+      <email>bcr@users.sourceforge.net</email>
+      <organization>Sendmail, Inc.</organization>
+      <url>http://www.sendmail.com</url>
+      <timezone>-8</timezone>
+    </developer>
+    <developer>
+      <name>Center Brute</name>
+      <id>centerbrute</id>
+      <email>centerbrute@users.sourceforge.net</email>
+      <timezone>-8</timezone>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>Sendmail Open Source License</name>
+    </license>
+  </licenses>
+  <mailingLists>
+    <mailingList>
+      <name>sendmail-jilter-discuss</name>
+      <subscribe>http://lists.sourceforge.net/lists/listinfo/sendmail-jilter-discuss</subscribe>
+      <unsubscribe>http://lists.sourceforge.net/lists/listinfo/sendmail-jilter-discuss</unsubscribe>
+      <archive>http://sourceforge.net/mailarchive/forum.php?forum=sendmail-jilter-discuss</archive>
+    </mailingList>
+  </mailingLists>
+  <repository>
+    <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/sendmail-jilter:sendmail-jilter</connection>
+    <developerConnection>scm:cvs:ext:developername@cvs.sourceforge.net:/cvsroot/sendmail-jilter:sendmail-jilter</developerConnection>
+    <url>http://cvs.sourceforge.net/viewcvs.py/sendmail-jilter/sendmail-jilter/</url>
+  </repository>
+  <dependencies>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+      <version>1.2.8</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <unitTestSourceDirectory>testsrc</unitTestSourceDirectory>
+  </build>
+  <reports>
+    <report>maven-changes-plugin</report>
+    <report>maven-changelog-plugin</report>
+    <report>maven-developer-activity-plugin</report>
+    <report>maven-file-activity-plugin</report>
+    <report>maven-license-plugin</report>
+    <report>maven-javadoc-plugin</report>
+    <!--    <report>maven-clover-plugin</report> -->
+    <!--    <report>maven-jcoverage-plugin</report> -->
+    <report>maven-junit-report-plugin</report>
+    <report>maven-jxr-plugin</report>
+    <report>maven-tasklist-plugin</report>
+  </reports>
+</project>
+

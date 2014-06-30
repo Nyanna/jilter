@@ -1,0 +1,96 @@
+<project name='Jilter' default='all' basedir='.'>
+  <property name='src_dir' value='src'/>
+  <property name='build_dir' value='build'/>
+  <property name='external_dir' value='External'/>
+
+  <property name='build_classes_dir' value='${build_dir}/classes'/>
+  <property name='build_docs_dir' value='${build_dir}/doc'/>
+  <property name='build_dist_dir' value='${build_dir}/dist'/>
+  <property name='build_zip_dir' value='${build_dir}/zips'/>
+  <property name="build_test_output_dir" value="${build_dir}/testoutput"/>
+
+  <property name='log4j_lib' value='${external_dir}/log4j.jar'/>
+  <property name='junit_lib' value='${external_dir}/junit.jar'/>
+
+  <path id='external_lib'>
+    <pathelement location='${log4j_lib}'/>
+    <pathelement location='${junit_lib}'/>
+  </path>
+
+  <target name='makedist' description='Build distribution'>
+    <delete dir='${build_dist_dir}'/>
+    <delete dir='${build_zip_dir}'/>
+
+    <copy todir='${build_dist_dir}'>
+      <fileset dir='${basedir}' excludes='build/** eclipse/**'/>
+    </copy>
+
+    <mkdir dir='${build_dist_dir}/lib'/>
+    <mkdir dir='${build_dist_dir}/javadoc'/>
+
+    <jar jarfile='${build_dist_dir}/lib/jilter.jar'
+         basedir='${build_classes_dir}'
+         excludes='**/test/**'/>
+
+    <copy todir='${build_dist_dir}/javadoc'>
+      <fileset dir='${build_docs_dir}'/>
+    </copy>
+
+    <mkdir dir='${build_zip_dir}'/>
+    <fixcrlf srcDir='${build_dist_dir}' excludes='**/*.jar **/*.gif' eol='crlf'/>
+    <zip zipfile='${build_zip_dir}/jilter.zip' basedir='${build_dist_dir}'/>
+
+    <fixcrlf srcDir='${build_dist_dir}' excludes='**/*.jar **/*.gif' eol='lf'/>
+    <tar destfile='${build_zip_dir}/jilter.tar.gz' basedir='${build_dist_dir}' compression='gzip'/>
+  </target>
+
+  <target name='compile' description='Compile everything'>
+    <mkdir dir='${build_classes_dir}'/>
+    <javac destdir='${build_classes_dir}' debug='true' includeAntRuntime='false'>
+      <classpath refid='external_lib'/>
+      <src path='${src_dir}'/>
+    </javac>
+  </target>
+
+  <target name='runtests' description='Runs unit tests'>
+    <junit fork='yes' haltonerror='true' haltonfailure='true' printsummary='on'>
+      <sysproperty key="log4j.configuration" value="file:${basedir}/log4j.xml"/>
+      <classpath path='${build_classes_dir}'/>
+      <classpath refid='external_lib'/>
+      <batchtest todir="${build_test_output_dir}">
+        <fileset dir="${build_classes_dir}">
+          <include name="**/Test*.*"/>
+
+          <!-- Put tests to suppress in here... -->
+
+          <exclude name="**/TestPackage.*"/>
+          <exclude name="**/Test*$*.*"/>
+
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name='docs' description='Javadoc everything'>
+    <javadoc destdir='${build_docs_dir}'
+             sourcepath='${src_dir}'
+             author='true'
+             private='false'
+             windowtitle='Jilter Documentation'
+             doctitle='&lt;h1&gt;Jilter Documentation&lt;/h1&gt;'
+             bottom='Copyright &#169; 2001-2004, Sendmail, Inc. All Rights Reserved.'>
+      <packageset dir='${src_dir}'>
+        <exclude name='**/test/**'/>
+        <exclude name='com/sendmail/jilter/internal'/>
+      </packageset>
+      <classpath refid='external_lib'/>
+      <link href="http://java.sun.com/j2se/1.4.2/docs/api"/>
+    </javadoc>
+  </target>
+
+  <target name='clean' description='Clean everything up'>
+    <delete dir='${build_dir}'/>
+  </target>
+
+  <target name='all' description='Do everything' depends='clean,compile,docs,runtests,makedist'/>
+</project>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<rss version="0.91">
+  <channel>
+    <title>Changes report</title>
+    <link>http://sendmail-jilter.sourceforge.net</link>
+    <description>Changes report</description>
+    <language>en-us</language>
+    <copyright>Copyright 2004 The Apache Software Foundation</copyright>
+    <item>
+      <title>3 change(s) for version 1.2</title>
+      <link>http://sendmail-jilter.sourceforge.net/changes-report.html</link>
+      <description>
+        <table border="1">
+          <tr>
+            <th style="width:50px">Type</th>
+            <th>Changes</th>
+            <th style="width:70px">By</th>
+          </tr>
+          <tr>
+            <td>add</td>
+            <td>Added JilterHandlerAdapter. Thanks to Neil Aggarwal (neil@JAMMConsulting.com) .</td>
+            <td>
+              <a href="http://sendmail-jilter.sourceforge.net/team-list.html#bcr">bcr</a>
+            </td>
+          </tr>
+          <tr>
+            <td>update</td>
+            <td>Updated docs for return value from JilterHandler.connect to reflect the fact that the MTA doesn't listen to anything other than SMFIS_ values. Thanks to Neil Aggarwal (neil@JAMMConsulting.com) .</td>
+            <td>
+              <a href="http://sendmail-jilter.sourceforge.net/team-list.html#bcr">bcr</a>
+            </td>
+          </tr>
+          <tr>
+            <td>update</td>
+            <td>Refactored SimpleHandler in the test cases to use JilterHandlerAdapter.</td>
+            <td>
+              <a href="http://sendmail-jilter.sourceforge.net/team-list.html#bcr">bcr</a>
+            </td>
+          </tr>
+        </table>
+      </description>
+    </item>
+  </channel>
+</rss>
