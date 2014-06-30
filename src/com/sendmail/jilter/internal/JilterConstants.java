@@ -20,6 +20,7 @@ public class JilterConstants
     public static final int SMFIC_OPTNEG = 'O';
     public static final int SMFIC_QUIT = 'Q';
     public static final int SMFIC_BODY = 'B';
+    public static final int SMFIC_DATA = 'T';
     public static final int SMFIC_ABORT = 'A';
 
     public static final int SMFIR_ACCEPT = 'a';
